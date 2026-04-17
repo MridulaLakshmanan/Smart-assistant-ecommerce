@@ -1,0 +1,265 @@
+/* =========================================
+   Cart & Checkout Styles
+   ========================================= */
+
+.checkout-layout {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-xl) var(--spacing-md);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-2xl);
+}
+
+@media (max-width: 900px) {
+  .checkout-layout {
+    flex-direction: column;
+  }
+}
+
+.checkout-main {
+  flex: 2;
+  min-width: 0;
+}
+
+.checkout-sidebar {
+  flex: 1;
+  position: sticky;
+  top: 80px;
+}
+
+/* --- Cart Items List --- */
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-bottom: 2px solid var(--color-border);
+  padding-bottom: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+}
+
+.cart-item {
+  display: flex;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-md) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.cart-item-img {
+  width: 100px;
+  height: 100px;
+  background-color: var(--color-bg-alt);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cart-item-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-item-title {
+  font-weight: 600;
+  font-size: var(--font-size-md);
+  margin-bottom: var(--spacing-xs);
+  color: var(--color-text-main);
+  text-decoration: none;
+}
+
+.cart-item-meta {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--spacing-auto);
+}
+
+.cart-item-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.cart-item-price {
+  font-weight: 700;
+  font-size: var(--font-size-lg);
+}
+
+.btn-remove {
+  color: var(--color-danger);
+  font-size: var(--font-size-sm);
+  text-decoration: underline;
+}
+
+/* --- Checkout Forms (Multi-step) --- */
+.checkout-steps {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-2xl);
+  position: relative;
+}
+
+.checkout-steps::before {
+  content: '';
+  position: absolute;
+  top: 14px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--color-border);
+  z-index: 1;
+}
+
+.step-indicator {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.step-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--color-bg-main);
+  border: 2px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  transition: all var(--transition-fast);
+}
+
+.step-indicator.active .step-circle {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.step-indicator.completed .step-circle {
+  border-color: var(--color-success);
+  background-color: var(--color-success);
+  color: white;
+}
+
+.step-label {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.step-indicator.active .step-label {
+  color: var(--color-primary);
+}
+
+.step-indicator.completed .step-label {
+  color: var(--color-success);
+}
+
+/* Form Layout */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+}
+
+.full-width {
+  grid-column: span 2;
+}
+
+.checkout-panel {
+  display: none;
+}
+
+.checkout-panel.active {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.radio-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.radio-card:hover {
+  background-color: var(--color-bg-alt);
+}
+
+.radio-card.selected {
+  border-color: var(--color-primary);
+  background-color: rgba(99, 102, 241, 0.05);
+}
+
+.radio-card input[type="radio"] {
+  margin-top: 4px;
+  accent-color: var(--color-primary);
+  width: 18px;
+  height: 18px;
+}
+
+/* --- Summary Sidebar --- */
+.summary-card {
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text-muted);
+}
+
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--spacing-md);
+  padding-top: var(--spacing-md);
+  border-top: 1px solid var(--color-border);
+  font-weight: 700;
+  font-size: var(--font-size-xl);
+  color: var(--color-text-main);
+}
+
+.promo-input {
+  display: flex;
+  gap: var(--spacing-xs);
+  margin-top: var(--spacing-lg);
+}
+
+.promo-input .input-field {
+  flex: 1;
+}

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Products - SmartCart AI</title>
+  
+  <link rel="stylesheet" href="styles/index.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="styles/search.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar" style="position: sticky; top: 0; z-index: 100; background-color: var(--color-bg-card); border-bottom: 1px solid var(--color-border); padding: 16px;">
+    <div class="nav-brand" style="cursor: pointer;" onclick="window.location.href='index.html'">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+      <span>SmartCart AI</span>
+    </div>
+    
+    <div class="nav-actions">
+       <div class="search-bar" style="width: 300px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" placeholder="Search products..." aria-label="Search" value="Headphones">
+      </div>
+      <button class="btn btn-secondary" onclick="window.location.href='dashboard.html'">AI Assistant</button>
+      <button class="btn-icon" onclick="window.location.href='cart.html'" aria-label="Cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+      </button>
+      <button id="theme-toggle" class="btn-icon" aria-label="Toggle Dark Mode"></button>
+    </div>
+  </nav>
+
+  <!-- Search Layout -->
+  <div class="search-layout">
+    
+    <!-- Filter Sidebar -->
+    <aside class="filter-sidebar" id="filter-sidebar">
+      <div class="filter-header">
+        <h3 style="margin: 0; font-size: var(--font-size-md);">Filters</h3>
+        <button id="close-filter-btn" class="btn-close" style="display: none;">&times;</button>
+        <a href="#" style="font-size: var(--font-size-sm);">Clear all</a>
+      </div>
+
+      <!-- Categories -->
+      <div class="filter-group">
+        <div class="filter-group-title">
+          Category
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition: transform var(--transition-fast)"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </div>
+        <div class="filter-list">
+          <label class="checkbox-label"><input type="checkbox" checked> Electronics (124)</label>
+          <label class="checkbox-label"><input type="checkbox"> Audio (86)</label>
+          <label class="checkbox-label"><input type="checkbox"> Computers (42)</label>
+          <label class="checkbox-label"><input type="checkbox"> Accessories (218)</label>
+        </div>
+      </div>
+
+      <!-- Price -->
+      <div class="filter-group">
+        <div class="filter-group-title">
+          Price Range
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition: transform var(--transition-fast)"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </div>
+        <div class="filter-list">
+          <input type="range" class="range-slider" min="0" max="1000" value="500">
+          <div class="price-inputs">
+            <input type="number" class="input-field" placeholder="Min" value="50">
+            <span>-</span>
+            <input type="number" class="input-field" placeholder="Max" value="500">
+          </div>
+        </div>
+      </div>
+
+      <!-- Brand -->
+      <div class="filter-group">
+        <div class="filter-group-title">
+          Brand
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition: transform var(--transition-fast)"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </div>
+        <div class="filter-list">
+          <label class="checkbox-label"><input type="checkbox"> Sony (12)</label>
+          <label class="checkbox-label"><input type="checkbox"> Bose (8)</label>
+          <label class="checkbox-label"><input type="checkbox"> Sennheiser (5)</label>
+          <label class="checkbox-label"><input type="checkbox"> Apple (4)</label>
+        </div>
+      </div>
+
+      <!-- Rating -->
+      <div class="filter-group">
+        <div class="filter-group-title">
+          Rating
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transition: transform var(--transition-fast)"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </div>
+        <div class="filter-list">
+          <label class="checkbox-label"><input type="checkbox" checked> 4 Stars & Up</label>
+          <label class="checkbox-label"><input type="checkbox"> 3 Stars & Up</label>
+        </div>
+      </div>
+      
+    </aside>
+
+    <!-- Results Section -->
+    <main class="results-main">
+      <div class="results-toolbar">
+        <div>
+          <button id="mobile-filter-btn" class="btn btn-secondary mobile-filter-btn mr-2" style="padding: 8px 12px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mr-2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+            Filters
+          </button>
+          <span style="color: var(--color-text-muted);">Showing 1-12 of 86 products for <strong>"Headphones"</strong></span>
+        </div>
+        <div style="display: flex; gap: var(--spacing-sm); align-items: center;">
+          <span style="font-size: var(--font-size-sm); color: var(--color-text-muted);">Sort by:</span>
+          <select class="sort-select">
+            <option>Relevance (AI Match)</option>
+            <option>Price: Low to High</option>
+            <option>Price: High to Low</option>
+            <option>Customer Rating</option>
+            <option>Newest Arrivals</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Grid -->
+      <div class="results-grid">
+        
+        <!-- Product Card 1 -->
+        <article class="product-card">
+          <div class="product-card-img-wrap">
+            <span class="badge badge-danger product-card-badge">Sale</span>
+            <button class="wishlist-btn" aria-label="Add to wishlist">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            </button>
+            <img src="assets/headphones_pro.png" alt="Product" style="width:100%; height:100%; object-fit:cover;">
+          </div>
+          <div class="product-card-body">
+            <div style="display: flex; align-items: center; gap: 4px; color: var(--color-warning); margin-bottom: 8px;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <span style="font-size: 12px; color: var(--color-text-muted);">4.8 (1.2k)</span>
+            </div>
+            <h3 class="product-card-title"><a href="product.html">Premium Wireless Headphones Pro with Active Noise Cancellation</a></h3>
+            <div class="product-card-price">
+              $249.99
+              <span class="price-original">$299.99</span>
+            </div>
+            <button class="btn btn-primary" onclick="showToast('Added to Cart!')">Add to Cart</button>
+          </div>
+        </article>
+
+        <!-- Product Card 2 -->
+        <article class="product-card">
+          <div class="product-card-img-wrap">
+            <span class="badge badge-success product-card-badge">New</span>
+            <button class="wishlist-btn" aria-label="Add to wishlist">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            </button>
+            <img src="assets/earbuds.png" alt="Product" style="width:100%; height:100%; object-fit:cover;">
+          </div>
+          <div class="product-card-body">
+            <div style="display: flex; align-items: center; gap: 4px; color: var(--color-warning); margin-bottom: 8px;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <span style="font-size: 12px; color: var(--color-text-muted);">4.9 (420)</span>
+            </div>
+            <h3 class="product-card-title"><a href="product.html">Studio Monitor Isolation Earbuds</a></h3>
+            <div class="product-card-price">
+              $129.50
+            </div>
+            <button class="btn btn-secondary" onclick="window.location.href='product.html'">View Details</button>
+          </div>
+        </article>
+
+        <!-- Product Card 3 -->
+        <article class="product-card">
+          <div class="product-card-img-wrap">
+            <button class="wishlist-btn" aria-label="Add to wishlist">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            </button>
+            <img src="assets/headphones_pro.png" alt="Product" style="width:100%; height:100%; object-fit:cover;">
+          </div>
+          <div class="product-card-body">
+            <div style="display: flex; align-items: center; gap: 4px; color: var(--color-warning); margin-bottom: 8px;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <span style="font-size: 12px; color: var(--color-text-muted);">4.5 (89)</span>
+            </div>
+            <h3 class="product-card-title"><a href="product.html">Over-ear Studio Headphones - Black</a></h3>
+            <div class="product-card-price">
+              $89.00
+            </div>
+            <button class="btn btn-primary" onclick="showToast('Added to Cart!')">Add to Cart</button>
+          </div>
+        </article>
+
+        <!-- Product Card 4 -->
+        <article class="product-card">
+          <div class="product-card-img-wrap">
+            <span class="badge badge-primary product-card-badge">AI Pick</span>
+            <button class="wishlist-btn" aria-label="Add to wishlist">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            </button>
+            <img src="assets/audio_transmitter.png" alt="Product" style="width:100%; height:100%; object-fit:cover;">
+          </div>
+          <div class="product-card-body">
+            <div style="display: flex; align-items: center; gap: 4px; color: var(--color-warning); margin-bottom: 8px;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <span style="font-size: 12px; color: var(--color-text-muted);">5.0 (2k)</span>
+            </div>
+            <h3 class="product-card-title"><a href="product.html">Next-Gen Audio Transmitter</a></h3>
+            <div class="product-card-price">
+              $39.99
+            </div>
+            <button class="btn btn-primary" onclick="showToast('Added to Cart!')">Add to Cart</button>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination">
+        <button class="btn btn-secondary">Load More Products</button>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="scripts/app.js"></script>
+  <script src="scripts/search.js"></script>
+</body>
+</html>

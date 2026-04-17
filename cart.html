@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - SmartCart AI</title>
+
+  <link rel="stylesheet" href="styles/index.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="styles/cart.css">
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar"
+    style="border-bottom: 1px solid var(--color-border); padding: 16px; display: flex; justify-content: space-between;">
+    <div class="nav-brand" style="cursor: pointer;" onclick="window.location.href='index.html'">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="9" cy="21" r="1"></circle>
+        <circle cx="20" cy="21" r="1"></circle>
+        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+      </svg>
+      <span>SmartCart AI Checkout</span>
+    </div>
+
+    <div class="nav-actions">
+      <div
+        style="display: flex; align-items: center; gap: 8px; font-weight: 500; font-size: var(--font-size-sm); color: var(--color-text-muted);">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+        </svg>
+        Secure Checkout
+      </div>
+      <button id="theme-toggle" class="btn-icon" aria-label="Toggle Dark Mode"></button>
+    </div>
+  </nav>
+
+  <!-- Main Layout -->
+  <main class="checkout-layout">
+
+    <!-- Left Column (Steps & Forms) -->
+    <div class="checkout-main">
+
+      <!-- Step Indicators -->
+      <div class="checkout-steps">
+        <div class="step-indicator active" data-step="1">
+          <div class="step-circle">1</div>
+          <span class="step-label">Address</span>
+        </div>
+        <div class="step-indicator" data-step="2">
+          <div class="step-circle">2</div>
+          <span class="step-label">Shipping</span>
+        </div>
+        <div class="step-indicator" data-step="3">
+          <div class="step-circle">3</div>
+          <span class="step-label">Payment</span>
+        </div>
+        <div class="step-indicator" data-step="4">
+          <div class="step-circle">4</div>
+          <span class="step-label">Confirm</span>
+        </div>
+      </div>
+
+      <!-- Steps Content -->
+      <div id="step-1" class="checkout-panel active">
+        <h2 style="margin-bottom: var(--spacing-lg);">Shipping Address</h2>
+        <div class="form-grid">
+          <div class="input-group">
+            <label class="input-label">First Name</label>
+            <input type="text" class="input-field" value="Jane">
+          </div>
+          <div class="input-group">
+            <label class="input-label">Last Name</label>
+            <input type="text" class="input-field" value="Doe">
+          </div>
+          <div class="input-group full-width">
+            <label class="input-label">Address Line 1</label>
+            <input type="text" id="shipping-address" class="input-field" placeholder="123 Main St">
+          </div>
+          <div class="input-group full-width">
+            <label class="input-label">Address Line 2 (Optional)</label>
+            <input type="text" class="input-field" placeholder="Apt, Suite, Bldg.">
+          </div>
+          <div class="input-group">
+            <label class="input-label">City</label>
+            <input type="text" class="input-field" placeholder="New York">
+          </div>
+          <div class="input-group">
+            <label class="input-label">State/Province</label>
+            <input type="text" class="input-field" placeholder="NY">
+          </div>
+          <div class="input-group">
+            <label class="input-label">Zip/Postal Code</label>
+            <input type="text" class="input-field" placeholder="10001">
+          </div>
+          <div class="input-group">
+            <label class="input-label">Country</label>
+            <select class="input-field">
+              <option>United States</option>
+              <option>Canada</option>
+              <option>United Kingdom</option>
+            </select>
+          </div>
+        </div>
+        <div style="display: flex; justify-content: flex-end; margin-top: var(--spacing-lg);">
+          <button class="btn btn-primary btn-next-step">Continue to Delivery</button>
+        </div>
+      </div>
+
+      <div id="step-2" class="checkout-panel">
+        <h2 style="margin-bottom: var(--spacing-lg);">Delivery Method</h2>
+        <div class="radio-group" style="margin-bottom: var(--spacing-xl);">
+
+          <label class="radio-card selected">
+            <input type="radio" name="shipping" checked>
+            <div style="flex: 1;">
+              <div style="display: flex; justify-content: space-between; font-weight: 600;">
+                <span>Free Standard Shipping</span>
+                <span>Free</span>
+              </div>
+              <div style="font-size: var(--font-size-sm); color: var(--color-text-muted); margin-top: 4px;">Delivers in
+                3-5 business days</div>
+            </div>
+          </label>
+
+          <label class="radio-card">
+            <input type="radio" name="shipping">
+            <div style="flex: 1;">
+              <div style="display: flex; justify-content: space-between; font-weight: 600;">
+                <span>Express Shipping</span>
+                <span>$12.99</span>
+              </div>
+              <div style="font-size: var(--font-size-sm); color: var(--color-text-muted); margin-top: 4px;">Delivers in
+                1-2 business days</div>
+            </div>
+          </label>
+
+        </div>
+        <div style="display: flex; justify-content: space-between;">
+          <button class="btn btn-secondary btn-prev-step">Back</button>
+          <button class="btn btn-primary btn-next-step">Continue to Payment</button>
+        </div>
+      </div>
+
+      <div id="step-3" class="checkout-panel">
+        <h2 style="margin-bottom: var(--spacing-lg);">Payment Method</h2>
+
+        <div class="form-grid"
+          style="margin-bottom: var(--spacing-lg); padding: var(--spacing-md); border: 1px solid var(--color-border); border-radius: var(--radius-md);">
+          <div class="input-group full-width">
+            <label class="input-label">Name on Card</label>
+            <input type="text" class="input-field" placeholder="Jane Doe">
+          </div>
+          <div class="input-group full-width">
+            <label class="input-label">Card Number</label>
+            <input type="text" class="input-field" placeholder="0000 0000 0000 0000">
+          </div>
+          <div class="input-group">
+            <label class="input-label">Expiration Date</label>
+            <input type="text" class="input-field" placeholder="MM/YY">
+          </div>
+          <div class="input-group">
+            <label class="input-label">CVV</label>
+            <input type="text" class="input-field" placeholder="123">
+          </div>
+        </div>
+
+        <div style="margin-bottom: var(--spacing-xl);">
+          <label class="checkbox-label">
+            <input type="checkbox" checked>
+            Billing address is the same as shipping address
+          </label>
+        </div>
+
+        <div style="display: flex; justify-content: space-between;">
+          <button class="btn btn-secondary btn-prev-step">Back</button>
+          <button class="btn btn-primary btn-next-step">Place Order</button>
+        </div>
+      </div>
+
+      <div id="step-4" class="checkout-panel">
+        <!-- Confimation generated via JS -->
+      </div>
+
+    </div>
+
+    <!-- Right Sidebar (Order Summary) -->
+    <div class="checkout-sidebar">
+      <div class="summary-card">
+        <h3
+          style="margin-bottom: var(--spacing-lg); padding-bottom: var(--spacing-sm); border-bottom: 1px solid var(--color-border);">
+          Order Summary</h3>
+
+        <div style="margin-bottom: var(--spacing-lg);">
+
+          <div class="cart-item">
+            <div class="cart-item-img">
+              <img src="assets/headphones_pro.png" alt="Premium Wireless Headphones Pro"
+                style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">
+            </div>
+            <div class="cart-item-details">
+              <a href="product.html" class="cart-item-title">Premium Wireless Headphones Pro</a>
+              <div class="cart-item-meta">Color: Midnight Black | Qty: 1</div>
+              <div class="cart-item-actions">
+                <span class="cart-item-price">$249.99</span>
+                <button class="btn-remove" onclick="removeItem(this)">Remove</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="cart-item">
+            <div class="cart-item-img">
+              <img src="assets/headphone_stand.png" alt="Universal Headphone Stand"
+                style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">
+            </div>
+            <div class="cart-item-details">
+              <a href="#" class="cart-item-title">Universal Headphone Stand</a>
+              <div class="cart-item-meta">Color: Silver | Qty: 1</div>
+              <div class="cart-item-actions">
+                <span class="cart-item-price">$24.99</span>
+                <button class="btn-remove" onclick="removeItem(this)">Remove</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="summary-row">
+          <span>Subtotal</span>
+          <span>$274.98</span>
+        </div>
+        <div class="summary-row">
+          <span>Shipping</span>
+          <span>Calculated at next step</span>
+        </div>
+        <div class="summary-row">
+          <span>Estimated Tax</span>
+          <span>$22.00</span>
+        </div>
+
+        <div class="summary-total">
+          <span>Total</span>
+          <span>$296.98</span>
+        </div>
+
+        <div class="promo-input">
+          <input type="text" class="input-field" placeholder="Discount Code">
+          <button class="btn btn-secondary">Apply</button>
+        </div>
+
+        <div id="checkout-sidebar-actions" style="margin-top: var(--spacing-xl);">
+          <button id="sidebar-main-btn" class="btn btn-primary btn-next-step" style="width: 100%;">Continue to
+            Shipping</button>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <script src="scripts/app.js"></script>
+  <script src="scripts/cart.js"></script>
+</body>
+
+</html>

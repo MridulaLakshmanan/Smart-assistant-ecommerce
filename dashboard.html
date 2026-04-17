@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - SmartCart AI</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles/index.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="styles/dashboard.css">
+  <link rel="stylesheet" href="styles/search.css">
+</head>
+
+<body class="dashboard-body">
+
+  <!-- Dashboard Header -->
+  <header class="dashboard-header">
+    <div class="header-left">
+      <div class="nav-brand" style="cursor: pointer;" onclick="window.location.href='index.html'">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+        <span>SmartCart</span>
+      </div>
+      <div class="breadcrumb">
+        Home &gt; Dashboard
+      </div>
+    </div>
+    <div class="header-right">
+      <button class="btn-icon" aria-label="Help">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+          <line x1="12" y1="17" x2="12.01" y2="17"></line>
+        </svg>
+      </button>
+      <button id="theme-toggle" class="btn-icon" aria-label="Toggle Dark Mode"></button>
+    </div>
+  </header>
+
+  <!-- Main Layout -->
+  <div class="dashboard-layout">
+
+    <!-- Left Sidebar -->
+    <aside class="sidebar-left">
+      <div class="user-profile">
+        <div class="avatar">JD</div>
+        <div>
+          <div style="font-weight: 600;">Jane Doe</div>
+          <div style="font-size: var(--font-size-sm); color: var(--color-primary);">Pro Member</div>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="sidebar-section">
+          <h4>Menu</h4>
+          <a href="dashboard.html" class="nav-item active">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            Dashboard
+          </a>
+          <a href="search.html" class="nav-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+            Shopping
+          </a>
+          <a href="#" class="nav-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path
+                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+              </path>
+            </svg>
+            Favorites
+          </a>
+          <a href="cart.html" class="nav-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+            Cart
+          </a>
+          <a href="analytics.html" class="nav-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="20" x2="18" y2="10"></line>
+              <line x1="12" y1="20" x2="12" y2="4"></line>
+              <line x1="6" y1="20" x2="6" y2="14"></line>
+            </svg>
+            Analytics
+          </a>
+        </div>
+
+        <div class="sidebar-section mt-4">
+          <h4>Recent Searches</h4>
+          <a href="#" class="nav-item" style="font-size: var(--font-size-sm);">• Noise cancelling headphones</a>
+          <a href="#" class="nav-item" style="font-size: var(--font-size-sm);">• Ergonomic office chair</a>
+        </div>
+      </nav>
+
+      <div style="padding: var(--spacing-md); border-top: 1px solid var(--color-border);">
+        <button class="nav-item"
+          style="width: 100%; border: none; background: none; color: var(--color-danger); cursor: pointer;"
+          onclick="window.location.href='index.html'">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+            <polyline points="16 17 21 12 16 7"></polyline>
+            <line x1="21" y1="12" x2="9" y2="12"></line>
+          </svg>
+          Logout
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Product Area -->
+    <main class="dashboard-main" style="flex: 1; padding: var(--spacing-xl); overflow-y: auto;">
+      
+      <!-- Hero Banner -->
+      <div class="hero-banner">
+        <div>
+          <span class="badge" style="background: rgba(255,255,255,0.2); color: white; border: none; margin-bottom: 8px;">Flash Sale</span>
+          <h1>⚡ Next-Gen Audio Sale</h1>
+          <p style="opacity: 0.9; margin-bottom: 16px;">Up to 40% off premium headphones and smart audio.</p>
+          <button class="btn btn-secondary" style="background: white; color: var(--color-primary); border: none;">Shop Now</button>
+        </div>
+        <div style="width: 150px; height: 150px;">
+          <img src="assets/headphones_pro.png" alt="Headphones" style="width: 100%; height: 100%; object-fit: contain; transform: scale(1.2);">
+        </div>
+      </div>
+
+      <!-- Trending Section -->
+      <div class="trending-section">
+        <h3 style="margin-bottom: var(--spacing-md); font-size: var(--font-size-md);">Trending Now 🔥</h3>
+        <div class="trending-carousel">
+          <div class="trending-card">
+            <div class="trending-img"><img src="assets/smartwatch.png" alt="Watch"></div>
+            <strong>Smartwatches</strong>
+          </div>
+          <div class="trending-card">
+            <div class="trending-img"><img src="assets/vr_headset.png" alt="VR"></div>
+            <strong>VR Headsets</strong>
+          </div>
+          <div class="trending-card">
+            <div class="trending-img"><img src="assets/gaming_mouse.png" alt="Mouse"></div>
+            <strong>Gaming Mice</strong>
+          </div>
+          <div class="trending-card">
+            <div class="trending-img"><img src="assets/smart_speaker.png" alt="Speaker"></div>
+            <strong>Smart Home</strong>
+          </div>
+          <div class="trending-card">
+            <div class="trending-img"><img src="assets/mac_keyboard.png" alt="Keyboard"></div>
+            <strong>Keyboards</strong>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-lg);">
+        <h2>AI Recommended For You</h2>
+      </div>
+
+      <div class="results-grid">
+        <!-- Original 3 Products -->
+        <article class="product-card">
+          <div class="product-card-img-wrap">
+            <span class="badge badge-primary product-card-badge" style="background: rgba(99, 102, 241, 0.85); color: white;">AI Pick</span>
+            <button class="wishlist-btn" aria-label="Add to wishlist"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+            <img src="assets/headphones_pro.png" alt="Product" style="width:100%; height:100%; object-fit:cover;">
+          </div>
+          <div class="product-card-body">
+            <div style="display: flex; align-items: center; gap: 4px; color: var(--color-warning); margin-bottom: 8px;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <span style="font-size: 12px; color: var(--color-text-muted);">4.8 (1.2k)</span>
+            </div>
+            <h3 class="product-card-title"><a href="product.html">Premium Wireless Headphones Pro</a></h3>
+            <div class="product-card-price">$249.99 <span class="price-original">$299.99</span></div>
+            <button class="btn btn-primary" onclick="showToast('Added to Cart!')">Add to Cart</button>
+          </div>
+        </article>
+
+        <!-- New Product 1 -->
+        <article class="product-card">
+          <div class="product-card-img-wrap">
+            <button class="wishlist-btn" aria-label="Add to wishlist"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+            <img src="assets/smartwatch.png" alt="Product" style="width:100%; height:100%; object-fit:cover;">
+          </div>
+          <div class="product-card-body">
+            <div style="display: flex; align-items: center; gap: 4px; color: var(--color-warning); margin-bottom: 8px;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <span style="font-size: 12px; color: var(--color-text-muted);">4.9 (850)</span>
+            </div>
+            <h3 class="product-card-title"><a href="product.html">Nexus Biometric Smartwatch</a></h3>
+            <div class="product-card-price">$199.00</div>
+            <button class="btn btn-secondary" onclick="window.location.href='product.html'">View Details</button>
+          </div>
+        </article>
+
+        <!-- New Product 2 -->
+        <article class="product-card">
+          <div class="product-card-img-wrap">
+            <span class="badge product-card-badge" style="background: rgba(236, 72, 153, 0.85); color: white;">New</span>
+            <button class="wishlist-btn" aria-label="Add to wishlist"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+            <img src="assets/mac_keyboard.png" alt="Product" style="width:100%; height:100%; object-fit:cover;">
+          </div>
+          <div class="product-card-body">
+            <div style="display: flex; align-items: center; gap: 4px; color: var(--color-warning); margin-bottom: 8px;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <span style="font-size: 12px; color: var(--color-text-muted);">4.7 (320)</span>
+            </div>
+            <h3 class="product-card-title"><a href="product.html">Astral Mechanical Keyboard (RGB)</a></h3>
+            <div class="product-card-price">$149.99</div>
+            <button class="btn btn-primary" onclick="showToast('Added to Cart!')">Add to Cart</button>
+          </div>
+        </article>
+
+        <!-- Original Product 2 -->
+        <article class="product-card">
+          <div class="product-card-img-wrap">
+            <button class="wishlist-btn" aria-label="Add to wishlist"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+            <img src="assets/earbuds.png" alt="Product" style="width:100%; height:100%; object-fit:cover;">
+          </div>
+          <div class="product-card-body">
+            <div style="display: flex; align-items: center; gap: 4px; color: var(--color-warning); margin-bottom: 8px;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <span style="font-size: 12px; color: var(--color-text-muted);">4.9 (420)</span>
+            </div>
+            <h3 class="product-card-title"><a href="product.html">Studio Monitor Isolation Earbuds</a></h3>
+            <div class="product-card-price">$129.50</div>
+            <button class="btn btn-secondary" onclick="window.location.href='product.html'">View Details</button>
+          </div>
+        </article>
+
+        <!-- New Product 3 -->
+        <article class="product-card">
+          <div class="product-card-img-wrap">
+            <button class="wishlist-btn" aria-label="Add to wishlist"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+            <img src="assets/gaming_mouse.png" alt="Product" style="width:100%; height:100%; object-fit:cover;">
+          </div>
+          <div class="product-card-body">
+            <div style="display: flex; align-items: center; gap: 4px; color: var(--color-warning); margin-bottom: 8px;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <span style="font-size: 12px; color: var(--color-text-muted);">4.5 (1k)</span>
+            </div>
+            <h3 class="product-card-title"><a href="product.html">Velocity Pro Gaming Mouse</a></h3>
+            <div class="product-card-price">$79.99</div>
+            <button class="btn btn-primary" onclick="showToast('Added to Cart!')">Add to Cart</button>
+          </div>
+        </article>
+
+        <!-- New Product 4 -->
+        <article class="product-card">
+          <div class="product-card-img-wrap">
+            <span class="badge product-card-badge" style="background: rgba(245, 158, 11, 0.85); color: white;">Trending</span>
+            <button class="wishlist-btn" aria-label="Add to wishlist"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+            <img src="assets/vr_headset.png" alt="Product" style="width:100%; height:100%; object-fit:cover;">
+          </div>
+          <div class="product-card-body">
+            <div style="display: flex; align-items: center; gap: 4px; color: var(--color-warning); margin-bottom: 8px;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <span style="font-size: 12px; color: var(--color-text-muted);">5.0 (214)</span>
+            </div>
+            <h3 class="product-card-title"><a href="product.html">Aether VRX Headset</a></h3>
+            <div class="product-card-price">$399.00</div>
+            <button class="btn btn-secondary" onclick="window.location.href='product.html'">View Details</button>
+          </div>
+        </article>
+
+        <!-- New Product 5 -->
+        <article class="product-card">
+           <div class="product-card-img-wrap">
+             <button class="wishlist-btn" aria-label="Add to wishlist"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+             <img src="assets/smart_speaker.png" alt="Product" style="width:100%; height:100%; object-fit:cover;">
+           </div>
+           <div class="product-card-body">
+             <div style="display: flex; align-items: center; gap: 4px; color: var(--color-warning); margin-bottom: 8px;">
+               <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+               <span style="font-size: 12px; color: var(--color-text-muted);">4.6 (510)</span>
+             </div>
+             <h3 class="product-card-title"><a href="product.html">Aura Home Smart Assistant</a></h3>
+             <div class="product-card-price">$99.99</div>
+             <button class="btn btn-primary" onclick="showToast('Added to Cart!')">Add to Cart</button>
+           </div>
+         </article>
+
+         <!-- Original Product 3 -->
+         <article class="product-card">
+           <div class="product-card-img-wrap">
+             <button class="wishlist-btn" aria-label="Add to wishlist"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+             <img src="assets/audio_transmitter.png" alt="Product" style="width:100%; height:100%; object-fit:cover;">
+           </div>
+           <div class="product-card-body">
+             <div style="display: flex; align-items: center; gap: 4px; color: var(--color-warning); margin-bottom: 8px;">
+               <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+               <span style="font-size: 12px; color: var(--color-text-muted);">5.0 (2k)</span>
+             </div>
+             <h3 class="product-card-title"><a href="product.html">Next-Gen Audio Transmitter</a></h3>
+             <div class="product-card-price">$39.99</div>
+             <button class="btn btn-primary" onclick="showToast('Added to Cart!')">Add to Cart</button>
+           </div>
+         </article>
+
+      </div>
+    </main>
+
+    <!-- Right Sidebar (Chat UI) -->
+    <aside class="sidebar-right chat-sidebar">
+      <div class="product-panel-header"
+        style="display: flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--color-border);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+        SmartCart Assistant
+      </div>
+
+      <div class="chat-history" id="chat-history">
+        <!-- Initial Welcome Message -->
+        <div class="message-wrapper message-bot">
+          <div class="message-bubble">
+            Hi Jane! 👋 I'm your SmartCart Assistant. What can I help you find today? Try asking for headphone deals or
+            search for specific brands.
+          </div>
+        </div>
+      </div>
+
+      <!-- Input Area -->
+      <div class="chat-input-area">
+        <div class="quick-actions" style="margin-bottom: var(--spacing-sm); margin-top: 0;">
+          <span class="badge">🎯 Recommend Similar</span>
+          <span class="badge">🏷️ Show Deals</span>
+        </div>
+        <div class="input-container">
+          <textarea id="chat-input" class="chat-input" placeholder="Ask me anything..." rows="1"
+            style="font-size: 13px;"></textarea>
+          <button id="btn-send" class="btn-send" aria-label="Send Message">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+
+  <script src="scripts/env.js"></script>
+  <script src="scripts/app.js"></script>
+  <script src="scripts/chat.js"></script>
+</body>
+
+</html>
